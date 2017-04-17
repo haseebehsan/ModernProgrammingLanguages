@@ -1,0 +1,27 @@
+#Internal package file, do not edit.
+#Fri Feb 17 17:10:48 PKT 2017
+2.base=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_
+5.file=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_\\resources.arsc
+5.set=ANDROID_RESOURCE
+3.base=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_
+6.file=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\selfie_details_fragment.xml
+2.set=ANDROID_RESOURCE
+4.base=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_
+7.file=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\menu\\selfie_details_menu.xml
+7.set=ANDROID_RESOURCE
+count=8
+0.file=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\selfie_row.xml
+5.base=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_
+4.set=ANDROID_RESOURCE
+6.base=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_
+1.file=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\selfies_activity.xml
+1.set=ANDROID_RESOURCE
+7.base=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_
+2.file=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_\\AndroidManifest.xml
+6.set=ANDROID_RESOURCE
+0.base=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_
+3.file=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\ic_launcher.png
+3.set=ANDROID_RESOURCE
+1.base=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_
+4.file=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\menu\\selfies_menu.xml
+0.set=ANDROID_RESOURCE

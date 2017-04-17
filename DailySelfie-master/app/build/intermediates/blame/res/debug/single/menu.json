@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\selfie_details_menu.xml",
+        "source": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\src\\main\\res\\menu\\selfie_details_menu.xml"
+    },
+    {
+        "merged": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\selfies_menu.xml",
+        "source": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\src\\main\\res\\menu\\selfies_menu.xml"
+    }
+]

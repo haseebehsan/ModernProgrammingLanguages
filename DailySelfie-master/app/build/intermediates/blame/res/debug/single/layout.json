@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\selfie_row.xml",
+        "source": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\src\\main\\res\\layout\\selfie_row.xml"
+    },
+    {
+        "merged": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\selfies_activity.xml",
+        "source": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\src\\main\\res\\layout\\selfies_activity.xml"
+    },
+    {
+        "merged": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\selfie_details_fragment.xml",
+        "source": "G:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\src\\main\\res\\layout\\selfie_details_fragment.xml"
+    }
+]

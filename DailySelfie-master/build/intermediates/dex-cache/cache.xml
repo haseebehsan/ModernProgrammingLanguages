@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="G:\InstalledPrograms\Android\SDK\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="G:\Workspace\AndroidStudio\DailySelfie-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-19.1.0_94ac698a6d66b6bb35085ca4117f846884abf4f3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Workspace\AndroidStudio\DailySelfie-master\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="781abc870c1e1ef10f2d4861f501edfabe590546">
+        <dex dex="G:\Workspace\AndroidStudio\DailySelfie-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_4fb4c951b717d9d5c3ab6f03be033f05570138eb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Workspace\AndroidStudio\DailySelfie-master\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="a7cbb527b3ac891bb7d1289df594694511bfec23">
+        <dex dex="G:\Workspace\AndroidStudio\DailySelfie-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_2622edf7f7a6fc336e8c0bc39f3706c49d869f9c\classes.dex" />
+    </item>
+
+</items>

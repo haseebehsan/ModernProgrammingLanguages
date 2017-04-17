@@ -1,0 +1,7 @@
+#Fri Feb 17 17:11:02 PKT 2017
+base.0=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_2622edf7f7a6fc336e8c0bc39f3706c49d869f9c
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4fb4c951b717d9d5c3ab6f03be033f05570138eb\\classes.dex
+base.1=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4fb4c951b717d9d5c3ab6f03be033f05570138eb
+file.0=G\:\\Workspace\\AndroidStudio\\DailySelfie-master\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_2622edf7f7a6fc336e8c0bc39f3706c49d869f9c\\classes.dex
