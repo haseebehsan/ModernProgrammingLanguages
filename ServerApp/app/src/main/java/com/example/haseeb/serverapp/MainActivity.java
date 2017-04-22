@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -30,30 +31,88 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
        // ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE},1);
-
         try {
-             myServer = new ServerSocket(9898);
-            Log.e("Exception", "In the try");
-           // conn = myServer.accept();
-            while(true) {
-                Log.e("Exception", "In the loop");
-                conn = myServer.accept();
-                in = conn.getInputStream();
-                input = new BufferedReader(new InputStreamReader(in));
+            myServer = new ServerSocket(9898);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+
+                    Log.e("Exception", "In the try");
+                    // conn = myServer.accept();
+                    while(!Thread.currentThread().isInterrupted()) {
+                        Log.e("Exception", "In the loop");
+                        conn = myServer.accept();
+                        Log.e("Exception", "after acceptance");
+                        CommunicationThread commThread = new CommunicationThread(conn);
+                        new Thread(commThread).start();
+
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                    Log.e("Exception", "General Exception"+e.toString());
+                }
+            }
+        });
+
+        thread.start();
+
+
+
+    }
+
+    class CommunicationThread implements Runnable {
+
+        private Socket clientSocket;
+        private BufferedReader input;
+        private String messageSend;
+
+        public CommunicationThread(Socket clientSocket) {
+            this.clientSocket = clientSocket;
+
+            try {
+                this.setInput(new BufferedReader(new InputStreamReader(
+                        this.clientSocket.getInputStream())));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void run() {
+            while (!Thread.currentThread().isInterrupted()) {
+
+
+
 
                 tv1 = (TextView)findViewById(R.id.tv1);
-                tv1.setText(input.readLine());
+                try {
+                    tv1.setText(input.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Log.e("Exception", "after setuopo");
+                /*
+                 * try { String read = input.readLine();
+                 * updateConversationHandler.post(new updateUIThread(read)); }
+                 * catch (IOException e) { e.printStackTrace(); }
+                 */
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            Log.e("Exception", "General Exception"+e.toString());
         }
 
+        public BufferedReader getInput() {
+            return input;
+        }
 
-
+        public void setInput(BufferedReader input) {
+            this.input = input;
+        }
     }
 }
