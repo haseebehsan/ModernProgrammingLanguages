@@ -14,20 +14,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        android:id="@+id/tv1" />
+        android:id="@+id/textView" />
 
     <Button
-        android:text="Start Service"
+        android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv1"
-        android:layout_toRightOf="@+id/tv1"
-        android:layout_toEndOf="@+id/tv1"
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
         android:layout_marginTop="34dp"
         android:id="@+id/startbutton" />
 
     <Button
-        android:text="Stop Service"
+        android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/startbutton"
