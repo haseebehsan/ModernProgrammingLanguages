@@ -21,12 +21,14 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.widget.Toast;
 
-public class backgroundTask extends Service implements LocationListener {
+public class backgroundTask extends Service  {
 
     double longitude, latitude;
     private LocationManager locationmanager;
-    Location location;
+    Location location, prevLocation;
+    LocationListener locListner;
     // constant
     public static final long NOTIFY_INTERVAL = 4 * 1000; // 10 seconds
 
@@ -47,6 +49,7 @@ public class backgroundTask extends Service implements LocationListener {
 
     @Override
     public void onCreate() {
+        locListner = new myLocation();
         // cancel if already existed
         if (mTimer != null) {
             mTimer.cancel();
@@ -72,7 +75,7 @@ public class backgroundTask extends Service implements LocationListener {
                     locationmanager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                     Criteria cri = new Criteria();
                     String provider = locationmanager.getBestProvider(cri, false);
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         // TODO: Consider calling
                         //    ActivityCompat#requestPermissions
                         // here to request the missing permissions, and then overriding
@@ -82,9 +85,26 @@ public class backgroundTask extends Service implements LocationListener {
                         // for ActivityCompat#requestPermissions for more details.
                         return;
                     }
+
                     Location location = locationmanager.getLastKnownLocation(provider);
 
-                    locationmanager.requestLocationUpdates(provider, 2000, 1, this);
+                    locationmanager.requestLocationUpdates(provider, 2000, 1, locListner);
+
+                    if(location!=null)
+
+                    {
+
+                        locListner.onLocationChanged(location);
+
+                    }
+
+                    else{
+
+                        Toast.makeText(getApplicationContext(),"location not found",Toast.LENGTH_LONG ).show();
+
+                    }
+
+
                     Log.e("tag1", "in run");
 
                     String message = "";
@@ -102,25 +122,36 @@ public class backgroundTask extends Service implements LocationListener {
         }
     }
 
-        @Override
-        public void onLocationChanged(Location location) {
-
-        }
+    public class myLocation implements LocationListener{
 
         @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
+        public void onLocationChanged (Location location){
 
-        }
+            String msg = location.getLatitude()+","+location.getLongitude();
+            if(prevLocation != null){
+                msg+= " "+location.distanceTo(prevLocation);
+            }
+
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+            Log.e("loc", msg);
+            prevLocation = location;
+
+    }
 
         @Override
-        public void onProviderEnabled(String provider) {
+        public void onStatusChanged (String provider,int status, Bundle extras){
 
-        }
+    }
 
         @Override
-        public void onProviderDisabled(String provider) {
+        public void onProviderEnabled (String provider){
 
-        }
+    }
+
+        @Override
+        public void onProviderDisabled (String provider){
+
+    }
 
        /* private String getDateTime() {
             // get date time in custom format
@@ -128,5 +159,5 @@ public class backgroundTask extends Service implements LocationListener {
             return sdf.format(new Date());
         }
 */
-
+    }
 }
