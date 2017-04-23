@@ -14,6 +14,7 @@ import android.widget.TextView;
 import static android.content.Context.MODE_PRIVATE;
 
 public class MainActivity extends AppCompatActivity {
+  
     Intent intent;
     TextView tv1;
     SQLiteDatabase db;
