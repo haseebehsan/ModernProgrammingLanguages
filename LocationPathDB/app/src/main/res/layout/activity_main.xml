@@ -14,27 +14,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        android:id="@+id/tv1" />
-
-    <Button
-        android:text="Start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv1"
-        android:layout_toRightOf="@+id/tv1"
-        android:layout_toEndOf="@+id/tv1"
-        android:layout_marginTop="34dp"
-        android:id="@+id/startbutton" />
+        android:id="@+id/tv1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/startbutton"
-        android:layout_alignLeft="@+id/startbutton"
-        android:layout_alignStart="@+id/startbutton"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="51dp"
-        android:id="@+id/stopbutton" />
+        android:id="@+id/stopbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="44dp" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startbutton"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_alignBaseline="@+id/stopbutton"
+        android:layout_alignBottom="@+id/stopbutton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/startbutton"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/add" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/number"
+        android:layout_above="@+id/stopbutton"
+        android:layout_alignRight="@+id/stopbutton"
+        android:layout_alignEnd="@+id/stopbutton"
+        android:layout_marginBottom="64dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/name"
+        android:layout_above="@+id/add"
+        android:layout_alignRight="@+id/stopbutton"
+        android:layout_alignEnd="@+id/stopbutton" />
 </RelativeLayout>
