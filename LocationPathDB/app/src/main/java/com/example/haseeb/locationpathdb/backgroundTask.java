@@ -1,22 +1,32 @@
 package com.example.haseeb.locationpathdb;
 
 
-        import android.app.Activity;
-        import android.app.ActivityManager;
-        import android.app.Service;
-        import android.content.Intent;
-        import android.os.Handler;
-        import android.os.IBinder;
-        import android.util.Log;
-        import android.widget.Toast;
+import android.Manifest;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 
-        import java.text.SimpleDateFormat;
-        import java.util.Date;
-        import java.util.List;
-        import java.util.Timer;
-        import java.util.TimerTask;
 
-public class backgroundTask extends Service {
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
+
+public class backgroundTask extends Service implements LocationListener {
+
+    double longitude, latitude;
+    private LocationManager locationmanager;
+    Location location;
     // constant
     public static final long NOTIFY_INTERVAL = 4 * 1000; // 10 seconds
 
@@ -31,7 +41,7 @@ public class backgroundTask extends Service {
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         mTimer.cancel();
     }
 
@@ -59,6 +69,22 @@ public class backgroundTask extends Service {
                 public void run() {
                     // display toast
 
+                    locationmanager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                    Criteria cri = new Criteria();
+                    String provider = locationmanager.getBestProvider(cri, false);
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    Location location = locationmanager.getLastKnownLocation(provider);
+
+                    locationmanager.requestLocationUpdates(provider, 2000, 1, this);
                     Log.e("tag1", "in run");
 
                     String message = "";
@@ -74,6 +100,27 @@ public class backgroundTask extends Service {
 
             });
         }
+    }
+
+        @Override
+        public void onLocationChanged(Location location) {
+
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
 
        /* private String getDateTime() {
             // get date time in custom format
@@ -81,5 +128,5 @@ public class backgroundTask extends Service {
             return sdf.format(new Date());
         }
 */
-    }
+
 }
