@@ -2,12 +2,14 @@ package com.example.haseeb.locationpathdb;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -98,10 +100,23 @@ public class FullscreenActivity extends AppCompatActivity {
 
         ListView l1 = (ListView)findViewById(R.id.list1);
         Intent I = getIntent();
-        ArrayList<String> list = I.getStringArrayListExtra("myarray1");
+        final ArrayList<String> list = I.getStringArrayListExtra("myarray1");
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
         l1.setAdapter(myAdapter);
+
+        //  "geo:"+msg+"?z=14"
+        l1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String coordinates = list.get(position);
+                String[] longlat = coordinates.split(" ");
+                String str = "geo:"+longlat[0]+","+longlat[1]+"?z=100";
+                Uri loc = Uri.parse(str);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, loc);
+                startActivity(mapIntent);
+            }
+        });
 
     }
 
