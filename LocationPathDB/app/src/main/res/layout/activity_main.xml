@@ -73,4 +73,23 @@
         android:layout_above="@+id/add"
         android:layout_alignRight="@+id/stopbutton"
         android:layout_alignEnd="@+id/stopbutton" />
+
+    <Button
+        android:text="Show Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showloc"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/startbutton"
+        android:layout_alignStart="@+id/startbutton" />
+
+    <Button
+        android:text="Show Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add"
+        android:layout_toRightOf="@+id/add"
+        android:layout_toEndOf="@+id/add"
+        android:id="@+id/showdata" />
+
 </RelativeLayout>

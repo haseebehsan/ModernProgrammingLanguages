@@ -6,6 +6,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Criteria;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,7 +25,7 @@ import android.net.Uri;
 import android.widget.Toast;
 
 public class backgroundTask extends Service  {
-
+    SQLiteDatabase db;
     double longitude, latitude;
     private LocationManager locationmanager;
     Location location, prevLocation;
@@ -49,6 +50,8 @@ public class backgroundTask extends Service  {
 
     @Override
     public void onCreate() {
+        db = openOrCreateDatabase("Location", MODE_PRIVATE, null);
+        ////db.execSQL("create table LocationHistory( location varchar(20))");
         locListner = new myLocation();
         // cancel if already existed
         if (mTimer != null) {
@@ -126,14 +129,27 @@ public class backgroundTask extends Service  {
 
         @Override
         public void onLocationChanged (Location location){
-
-            String msg = location.getLatitude()+","+location.getLongitude();
+            Float distance = Float.valueOf(0);
+            String msg = location.getLatitude()+" "+location.getLongitude();
             if(prevLocation != null){
-                msg+= " "+location.distanceTo(prevLocation);
+
+                distance = location.distanceTo(prevLocation);
+
+
+                if(distance>1){
+                    db.execSQL("insert into LocationHistory(location) values ('"+msg +"');");
+                    Log.e("db", "record added"+msg);
+                    Toast.makeText(getApplicationContext(), "added: "+msg+" "+distance, Toast.LENGTH_SHORT).show();
+                }
+                msg+= " "+distance;
             }
 
-            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
             Log.e("loc", msg);
+
+
+
+
             prevLocation = location;
 
     }
