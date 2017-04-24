@@ -11,12 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class MainActivity extends AppCompatActivity {
   
-    Intent intent;
-    Button showdata, showloc;
+    Intent intent, listActivity, mapIntent;
+    Button showdata, showloc, runquery, mapshow;
+    ArrayList<String> locations;
     TextView tv1;
     SQLiteDatabase db;
     String no = "s_no";
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         val = (EditText)findViewById(R.id.name);
         showdata = (Button)findViewById(R.id.showdata);
         showloc = (Button)findViewById(R.id.showloc);
+        runquery = (Button)findViewById(R.id.runquery);
+        mapshow = (Button)findViewById(R.id.mapshow);
         val1=11;
 
         val2="Haseeb";
@@ -55,23 +60,46 @@ public class MainActivity extends AppCompatActivity {
         tv1.setText(s1);
 
 
-
-
-
-        intent = new Intent(this,backgroundTask.class);
-        showloc.setOnClickListener(new View.OnClickListener() {
+        runquery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 db = openOrCreateDatabase("Location", MODE_PRIVATE, null);
+                String query = val.getText().toString();
+                db.execSQL(query);
+            }
+        });
+
+        mapIntent = new Intent(this, MapsActivity.class);
+        intent = new Intent(this,backgroundTask.class);
+        listActivity = new Intent(this, FullscreenActivity.class);
+
+
+        mapshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(mapIntent);
+            }
+        });
+
+        showloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data = "l";
+                db = openOrCreateDatabase("Location", MODE_PRIVATE, null);
                 Cursor cursor = db.rawQuery("select * from LocationHistory", null);
+                locations = new ArrayList<String>();
                 String s1="";
                 if (cursor.moveToFirst()) {
                     do {
-                        s1 = s1 +"\n"+ cursor.getString(cursor.getColumnIndex("location"));
+                        data = cursor.getString(cursor.getColumnIndex("location"));
+                        locations.add(data);
+                        s1 = s1 +"\n"+ data;
                     } while (cursor.moveToNext());
                 }
                 tv1 = (TextView)findViewById(R.id.tv1);
                 tv1.setText(s1);
+                listActivity.putStringArrayListExtra("myarray1",locations);
+                startActivity(listActivity);
             }
         });
 
@@ -80,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 db = openOrCreateDatabase("Teacher", MODE_PRIVATE, null);
                 Cursor cursor = db.rawQuery("select * from StudentTab", null);
+
                 String s1="";
                 if (cursor.moveToFirst()) {
                     do {

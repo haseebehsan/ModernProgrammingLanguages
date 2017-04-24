@@ -137,7 +137,7 @@ public class backgroundTask extends Service  {
 
 
                 if(distance>1){
-                    db.execSQL("insert into LocationHistory(location) values ('"+msg +"');");
+                    db.execSQL("insert into LocationHistory(location) values ('"+msg+" "+distance+"');");
                     Log.e("db", "record added"+msg);
                     Toast.makeText(getApplicationContext(), "added: "+msg+" "+distance, Toast.LENGTH_SHORT).show();
                 }
