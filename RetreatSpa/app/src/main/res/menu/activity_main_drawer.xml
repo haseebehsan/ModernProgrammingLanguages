@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@android:drawable/ic_menu_help"
+            android:title="About" />
+        <item
+            android:id="@+id/nav_payment"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Payment" />
+
+    </group>
+
+    <item android:title="Review"
+        android:icon="@android:drawable/btn_star"
+        android:id="@+id/nav_OTHER"
+        android:visible="true">
+        <menu>
+            <item
+                android:id="@+id/nav_review"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Review" />
+
+        </menu>
+    </item>
+
+</menu>
