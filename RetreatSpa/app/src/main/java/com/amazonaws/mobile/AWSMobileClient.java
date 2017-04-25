@@ -17,6 +17,7 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
+import com.amazonaws.mobilehelper.auth.signin.CognitoUserPoolsSignInProvider;
 
 /**
  * The AWS Mobile Client bootstraps the application to make calls to AWS 
@@ -147,6 +148,8 @@ public class AWSMobileClient {
 
 
     private static void addSignInProviders(final Context context, final IdentityManager identityManager) {
+        // Add Cognito User Pools as an Identity Provider.
+        identityManager.addIdentityProvider(CognitoUserPoolsSignInProvider.class);
     }
 
     /**

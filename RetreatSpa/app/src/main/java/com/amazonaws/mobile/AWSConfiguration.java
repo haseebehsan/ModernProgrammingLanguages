@@ -27,10 +27,18 @@ public class AWSConfiguration {
         "us-east-1:ab8d6aa6-2680-4530-88bc-d1410071e725";
     public static final Regions AMAZON_DYNAMODB_REGION =
        Regions.fromName("us-east-1");
+    public static final String AMAZON_COGNITO_USER_POOL_ID =
+        "us-east-1_M2Lh7CTRo";
+    public static final String AMAZON_COGNITO_USER_POOL_CLIENT_ID =
+        "3tuvc1nacptofr7vpngv3cg73t";
+    public static final String AMAZON_COGNITO_USER_POOL_CLIENT_SECRET =
+        "1j5l6a89hn9eli9a07h3s6k1i5lqg59qh63s77jip8sbnbtmbr4m";
 
     private static final AWSMobileHelperConfiguration helperConfiguration = new AWSMobileHelperConfiguration.Builder()
         .withCognitoRegion(AMAZON_COGNITO_REGION)
         .withCognitoIdentityPoolId(AMAZON_COGNITO_IDENTITY_POOL_ID)
+        .withCognitoUserPool(AMAZON_COGNITO_USER_POOL_ID,
+            AMAZON_COGNITO_USER_POOL_CLIENT_ID, AMAZON_COGNITO_USER_POOL_CLIENT_SECRET)
         .build();
     /**
      * @return the configuration for AWSKit.

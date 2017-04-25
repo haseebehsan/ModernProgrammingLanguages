@@ -107,20 +107,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -131,11 +118,11 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_payment) {
             Log.e("tag1", "nav_paymeent click");
-            try {
-                URI u = new URI("");
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
+
+                Uri uri = Uri.parse("https://www.myfatoorah.com/31012017185313275962828168"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
             // Handle the camera action
         } else if (id == R.id.nav_about) {
             Log.e("tag1", "nav_review about");
