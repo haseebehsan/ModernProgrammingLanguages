@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     class CommunicationThread implements Runnable {
 
+        String val;
         private Socket clientSocket;
         private BufferedReader input;
         private String messageSend;
@@ -87,14 +88,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void run() {
-            while (!Thread.currentThread().isInterrupted()) {
-
+            while (!clientSocket.isClosed()) {
+                Log.e("mgs", "Inside Run after Acception");
 
 
 
                 tv1 = (TextView)findViewById(R.id.tv1);
                 try {
-                    tv1.setText(input.readLine());
+
+                        val = input.readLine();
+//                    while((val = input.readLine()) == null){
+//
+//                    }
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tv1.setText(val);
+                        }
+                    });
+                    Log.e("output", val);
+
+                    //tv1.setText(val);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
