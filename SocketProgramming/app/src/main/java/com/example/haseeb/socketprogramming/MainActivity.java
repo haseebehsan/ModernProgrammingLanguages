@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     EditText edit;
     String msg = "echo";
-    String serverIP = "192.168.43.149";
+    String serverIP = "192.168.166.103";
     Thread thread;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,24 +44,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        class myThread implements Runnable{
+    class myThread implements Runnable{
 
-            @Override
-            public void run() {
-                try {
-                    InetAddress serverAddr =  InetAddress.getByName(serverIP);
+        @Override
+        public void run() {
+            try {
+                InetAddress serverAddr =  InetAddress.getByName(serverIP);
 
-                    Socket socket = new Socket(serverAddr, 9898);
+                Socket socket = new Socket(serverAddr, 9898);
 
-                    PrintWriter out = new PrintWriter(new BufferedWriter(
-                            new OutputStreamWriter(socket.getOutputStream())),
-                            true);
-                    out.println(msg);
+                PrintWriter out = new PrintWriter(new BufferedWriter(
+                        new OutputStreamWriter(socket.getOutputStream())),
+                        true);
+                out.println(msg);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        }
 
     }
 

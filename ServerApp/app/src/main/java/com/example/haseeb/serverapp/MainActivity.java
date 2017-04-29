@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
-       // ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE},1);
+        // ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE},1);
         try {
             myServer = new ServerSocket(9898);
         }
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 tv1 = (TextView)findViewById(R.id.tv1);
                 try {
 
-                        val = input.readLine();
+                    val = input.readLine();
 //                    while((val = input.readLine()) == null){
 //
 //                    }
