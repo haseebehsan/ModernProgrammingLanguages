@@ -1,7 +1,0 @@
-#Fri Apr 28 16:22:28 PKT 2017
-base.0=C\:\\Users\\Muhammad Usman\\AndroidStudioProjects\\ChatClient2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_d9502ccd47159e51b40303ffa6eb9b9aceb801f7
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=C\:\\Users\\Muhammad Usman\\AndroidStudioProjects\\ChatClient2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_bf4aad58b8aba0120a8c10990935602eb31b363c\\classes.dex
-base.1=C\:\\Users\\Muhammad Usman\\AndroidStudioProjects\\ChatClient2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_bf4aad58b8aba0120a8c10990935602eb31b363c
-file.0=C\:\\Users\\Muhammad Usman\\AndroidStudioProjects\\ChatClient2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_d9502ccd47159e51b40303ffa6eb9b9aceb801f7\\classes.dex
