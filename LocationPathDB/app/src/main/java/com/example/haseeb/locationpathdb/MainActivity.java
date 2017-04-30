@@ -17,8 +17,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MainActivity extends AppCompatActivity {
   
-    Intent intent, listActivity;
-    Button showdata, showloc, runquery;
+    Intent intent, listActivity, mapIntent;
+    Button showdata, showloc, runquery, mapshow;
     ArrayList<String> locations;
     TextView tv1;
     SQLiteDatabase db;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         showdata = (Button)findViewById(R.id.showdata);
         showloc = (Button)findViewById(R.id.showloc);
         runquery = (Button)findViewById(R.id.runquery);
+        mapshow = (Button)findViewById(R.id.mapshow);
         val1=11;
 
         val2="Haseeb";
@@ -68,9 +69,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        mapIntent = new Intent(this, MapsActivity.class);
         intent = new Intent(this,backgroundTask.class);
         listActivity = new Intent(this, FullscreenActivity.class);
+
+
+        mapshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(mapIntent);
+            }
+        });
+
         showloc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
