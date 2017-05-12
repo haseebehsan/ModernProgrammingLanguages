@@ -4,6 +4,7 @@ import android.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -21,7 +22,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -39,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationmanager;
     Location location, prevLocation;
     LocationListener locListner;
+    Marker prev;
     // constant
     public static final long NOTIFY_INTERVAL = 4 * 1000; // 10 seconds
     private Handler mHandler = new Handler();
@@ -78,6 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 public void run() {
                     // display toast
                     new MyTasl().execute("haseeb");
+                    Log.e("map", "req");
 
                 }
 
@@ -125,12 +130,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         @Override
         protected void onPostExecute(String result){
+
             Log.e("db", "record added"+result);
             String[] inputs = result.split(",");
             String[] longlat = inputs[1].split(" ");
             LatLng sydney = new LatLng(Double.parseDouble(longlat[0]), Double.parseDouble(longlat[1]));
-            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+            if(prev != null){
+                PolylineOptions poly = new PolylineOptions();
+                poly.add(prev.getPosition(), sydney);
+                poly.color(Color.BLUE);
+                mMap.addPolyline(poly);
+                prev.remove();
+            }
+            else{
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,10.0f));
+            }
+            prev = mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
 
         }
     }
